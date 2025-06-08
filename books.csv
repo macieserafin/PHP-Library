@@ -1,9 +1,31 @@
 ID,Tytuł,Autor,Wydawnictwo,Rok,Stron
-1,"Harry Potter and the Philosopher's Stone","J.K. Rowling",Bloomsbury,1997,223
-2,"To Kill a Mockingbird","Harper Lee","J.B. Lippincott & Co.",1960,281
-3,1984,"George Orwell","Secker & Warburg",1949,328
-4,"The Great Gatsby","F. Scott Fitzgerald","Charles Scribner's Sons",1925,180
-5,"Moby Dick","Herman Melville","Harper & Brothers",1851,585
-6,"Pride and Prejudice","Jane Austen","T. Egerton",Whitehall,1813
-7,"The Catcher in the Rye","J.D. Salinger",Little,"Brown and Company",1951
-8,"Brave New World","Aldous Huxley","Chatto & Windus",1932,311
+1,1984,"George Orwell","Secker & Warburg",1949,328
+2,"Atlas zbuntowany","Ayn Rand","Random House",1957,1168
+3,"Bracia Karamazow","Fiodor Dostojewski","The Russian Messenger",1880,824
+4,"Cień wiatru","Carlos Ruiz Zafón",Planeta,2001,565
+5,"Duma i uprzedzenie","Jane Austen","T. Egerton",1813,279
+6,"Dziewczyna z pociągu","Paula Hawkins","Riverhead Books",2015,316
+7,"Folwark zwierzęcy","George Orwell","Secker & Warburg",1945,112
+8,"Gra o tron","George R.R. Martin","Bantam Books",1996,694
+9,"Harry Potter i Kamień Filozoficzny","J.K. Rowling",Bloomsbury,1997,223
+10,"Harry Potter i Komnata Tajemnic","J.K. Rowling",Bloomsbury,1998,251
+11,"Imię róży","Umberto Eco",Bompiani,1980,512
+12,"Kubuś Puchatek","A.A. Milne",Methuen,1926,145
+13,Lolita,"Vladimir Nabokov","Olympia Press",1955,336
+14,"Mały Książę","Antoine de Saint-Exupéry","Reynal & Hitchcock",1943,96
+15,"Mistrz i Małgorzata","Michaił Bułhakow","YMCA Press",1966,384
+16,"Moby Dick","Herman Melville","Harper & Brothers",1851,585
+17,"Opowieść wigilijna","Charles Dickens","Chapman & Hall",1843,104
+18,"Pan Tadeusz","Adam Mickiewicz","Gebethner i Wolff",1834,320
+19,"Podróże Guliwera","Jonathan Swift","Benjamin Motte",1726,306
+20,"Przeminęło z wiatrem","Margaret Mitchell",Macmillan,1936,1037
+21,"Rok 1984","George Orwell","Secker & Warburg",1949,328
+22,"Sherlock Holmes: Studium w szkarłacie","Arthur Conan Doyle","Ward Lock & Co",1887,123
+23,"Sto lat samotności","Gabriel García Márquez","Harper & Row",1967,417
+24,"Wielki Gatsby","F. Scott Fitzgerald",Scribner,1925,218
+25,"Wojna i pokój","Lew Tołstoj","The Russian Messenger",1869,1225
+26,"Władca Pierścieni","J.R.R. Tolkien","Allen & Unwin",1954,1178
+27,"Władczyni ognia","Sally Green",Penguin,2015,528
+28,"Zbrodnia i kara","Fiodor Dostojewski","The Russian Messenger",1866,430
+29,"Zielona Mila","Stephen King","Signet Books",1996,400
+30,"Złodziejka książek","Markus Zusak",Picador,2005,552

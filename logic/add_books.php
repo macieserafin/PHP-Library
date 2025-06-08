@@ -7,16 +7,41 @@ require_once __DIR__ . '/../config.php';
 if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
+normalizeBookIDs($books);
 
 // Inicjalizacja tablicy błędów
 $errors = [];
 
 // Walidacja pól formularza
-$title = isset($_POST['title']) ? trim($_POST['title']) : '';
-$author = isset($_POST['author']) ? trim($_POST['author']) : '';
-$publisher = isset($_POST['publisher']) ? trim($_POST['publisher']) : '';
-$year = isset($_POST['year']) ? (int) $_POST['year'] : 0;
-$pageCount = isset($_POST['pageCount']) ? (int) $_POST['pageCount'] : 0;
+if (isset($_POST['title'])) {
+    $title = trim($_POST['title']);
+} else {
+    $title = '';
+}
+
+if (isset($_POST['author'])) {
+    $author = trim($_POST['author']);
+} else {
+    $author = '';
+}
+
+if (isset($_POST['publisher'])) {
+    $publisher = trim($_POST['publisher']);
+} else {
+    $publisher = '';
+}
+
+if (isset($_POST['year'])) {
+    $year = (int) $_POST['year'];
+} else {
+    $year = 0;
+}
+
+if (isset($_POST['pageCount'])) {
+    $pageCount = (int) $_POST['pageCount'];
+} else {
+    $pageCount = 0;
+}
 
 if ($title === '') $errors[] = 'Tytuł jest wymagany.';
 if ($author === '') $errors[] = 'Autor jest wymagany.';
@@ -34,6 +59,11 @@ if (!empty($errors)) {
 // Wczytaj aktualną listę książek z sesji
 $books = isset($_SESSION['books']) ? $_SESSION['books'] : [];
 
+normalizeBookIDs($books);
+
+// Zapisz znormalizowaną listę do sesji, żeby mieć pewność
+$_SESSION['books'] = $books;
+
 // Wygeneruj nowe ID
 $maxId = 0;
 foreach ($books as $book) {
@@ -41,12 +71,15 @@ foreach ($books as $book) {
 }
 $newId = $maxId + 1;
 
-// Utwórz nową książkę
-$newBook = new Book($newId, $title, $author, $publisher, $year, $pageCount);
-
-// Dodaj do listy
-$books[] = $newBook;
-$_SESSION['books'] = $books;
+try {
+    $newBook = new Book($newId, $title, $author, $publisher, $year, $pageCount);
+    $books[] = $newBook;
+    $_SESSION['books'] = $books;
+} catch (Exception $e) {
+    $_SESSION['form_errors'] = [$e->getMessage()];
+    header('Location: /pages/add_book.php');
+    exit;
+}
 
 // Zapisz do CSV
 $csvPath = __DIR__ . '/../books.csv';
@@ -70,6 +103,8 @@ foreach ($books as $book) {
 }
 
 fclose($fp);
+
+
 
 // Przekieruj z powrotem do listy
 header('Location: ' . BASE_URL . '/pages/list_books.php');

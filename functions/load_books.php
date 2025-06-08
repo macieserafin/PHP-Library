@@ -28,19 +28,24 @@ function loadBooksFromCSV($filePath) {
         }
 
         // Sprawdź, czy żadne pole nie jest puste
-        if (in_array('', $data, true)) {
+        if (in_array('', $data)) {
             continue; // pomiń wiersz z pustym polem
         }
 
         // Utwórz obiekt i dodaj do tablicy
-        $books[] = new Book(
-            trim($data[0]),
-            trim($data[1]),
-            trim($data[2]),
-            trim($data[3]),
-            trim($data[4]),
-            trim($data[5])
-        );
+        try {
+            $books[] = new Book(
+                trim($data[0]),
+                trim($data[1]),
+                trim($data[2]),
+                trim($data[3]),
+                trim($data[4]),
+                trim($data[5])
+            );
+        } catch (Exception $e) {
+            //$e przechowuje Exception ktore ustawilem w kasie
+            continue;
+        }
     }
 
     fclose($handle);

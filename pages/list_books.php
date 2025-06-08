@@ -5,7 +5,7 @@ if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
 
-require_once __DIR__ . '/../logic/load_books.php';
+require_once __DIR__ . '/../functions/load_books.php';
 
 
 try {

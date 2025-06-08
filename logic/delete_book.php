@@ -6,6 +6,7 @@ if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
 
+
 // Walidacja ID
 if (!isset($_POST['id']) || !is_numeric($_POST['id'])) {
     die('ID książki nie zostało przesłane lub jest nieprawidłowe.');
@@ -13,13 +14,20 @@ if (!isset($_POST['id']) || !is_numeric($_POST['id'])) {
 $bookIdToDelete = (int)$_POST['id'];
 
 // Pobierz książki z sesji
-$books = isset($_SESSION['books']) ? $_SESSION['books'] : [];
+if (isset($_SESSION['books'])) {
+    $books = $_SESSION['books'];
+} else {
+    $books = [];
+}
 
 // Przefiltruj książki
 $books = array_filter($books, function($book) use ($bookIdToDelete) {
     return (int)$book->id !== $bookIdToDelete;
 });
 $books = array_values($books); // Przepisz indeksy
+
+// Normalizuj ID (przypisz ID od 1 wzwyż, uporządkuj)
+normalizeBookIDs($books);
 
 // Zapisz do sesji
 $_SESSION['books'] = $books;
@@ -51,6 +59,7 @@ fclose($fp);
 if (!file_exists(__DIR__ . '/../pages/list_books.php')) {
     die("Plik '/pages/list_books.php' nie istnieje!");
 }
+
 header('Location: ' . BASE_URL . '/pages/list_books.php');
 
 exit;
